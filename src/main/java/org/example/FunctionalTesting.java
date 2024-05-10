@@ -53,7 +53,8 @@ public class FunctionalTesting {
 
         File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 
-        FileHandler.copy(screenshotFile, new File("C:\\Users\\DELL\\Desktop\\Automation Testing\\FunctionalTesting.png"));
-//         driver.close();
+        FileHandler.copy(screenshotFile, new File("C:\\Users\\DELL\\Desktop\\Automation Testing\\Functional Testing\\FunctionalTesting1.png"));
+         driver.close();
+         driver.quit();
     }
 }

@@ -35,13 +35,12 @@ public class Chromeresolutiontest {
         ex.put(5,"https://www.getcalley.com/");
 
         Set<Map.Entry<Integer, String>> s = ex.entrySet();
-        for(Map.Entry<Integer, String> x:s){
+        for(Map.Entry<Integer, String> x:s) {
 
             System.out.println(x.getValue());
 
             System.setProperty("webdriver.chrome.driver", "C:/Users/DELL/Documents/GitHub/Automation1/src/driver/chromedriver.exe");
-             driver = new ChromeDriver();
-
+            driver = new ChromeDriver();
 
 
             driver.get(x.getValue());
@@ -50,29 +49,28 @@ public class Chromeresolutiontest {
             Dimension[] resolutions = {new Dimension(1920, 1080),
                     new Dimension(1366, 768),
                     new Dimension(1536, 864),
-                    new Dimension(360,640),
-                    new Dimension(414,896),
-                    new Dimension(375,667)};
+                    new Dimension(360, 640),
+                    new Dimension(414, 896),
+                    new Dimension(375, 667)};
 
-            for(Dimension k:resolutions){
+            for (Dimension k : resolutions) {
                 driver.manage().window().setSize(k);
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
 
-                File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(screenshotFile, new File("C:\\Users\\DELL\\Desktop\\Automation Testing\\UITesting1.png"));
+                File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+                String uniqueFileName = "_" + x.getKey() + "_" + k.getHeight() + "-" + k.getWidth();
+                FileUtils.copyFile(screenshotFile, new File("C:\\Users\\DELL\\Desktop\\Automation Testing\\ChromeUI Testing\\UITesting1" + uniqueFileName + ".png"));
 
 
             }
 
-driver.close();
-//
+            driver.close();
+            driver.quit();
 
-
-
-
+        }
     }
 }
 
 
-}
+

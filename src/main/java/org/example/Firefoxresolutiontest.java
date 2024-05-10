@@ -7,6 +7,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 import java.io.File;
@@ -39,8 +40,7 @@ public class Firefoxresolutiontest {
 
             System.out.println(x.getValue());
 
-            System.setProperty("webdriver.chrome.driver", "C:/Users/DELL/Documents/GitHub/Automation1/src/driver/chromedriver.exe");
-            driver = new ChromeDriver();
+            driver = new FirefoxDriver();
 
 
 
@@ -60,20 +60,19 @@ public class Firefoxresolutiontest {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss");
 
                 File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-                FileUtils.copyFile(screenshotFile, new File("C:\\Users\\DELL\\Desktop\\Automation Testing\\UITesting1.png"));
+
+                String uniqueFileName2 = "_" + x.getKey() + "_" + k.getHeight() + "-" + k.getWidth();
+                FileUtils.copyFile(screenshotFile, new File("C:\\Users\\DELL\\Desktop\\Automation Testing\\FirefoxUI Testing\\UITesting2"+uniqueFileName2+".png"));
 
 
             }
 
             driver.close();
-//
-
-
+            driver.quit();
 
 
         }
     }
-
 
 }
 
